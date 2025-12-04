@@ -13,6 +13,10 @@ export const AppleCarousel: React.FC<AppleCarouselProps> = ({ items }) => {
   const timerRef = useRef<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
+  // Touch state for swipe detection
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+
   const startTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = window.setInterval(() => { setActiveIndex((prev) => (prev + 1) % items.length); }, 5000);
@@ -29,8 +33,43 @@ export const AppleCarousel: React.FC<AppleCarouselProps> = ({ items }) => {
     });
   }, [activeIndex]);
 
+  // --- Touch Handlers ---
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50; // Threshold to consider it a swipe
+
+    if (distance > minSwipeDistance) {
+      // Swiped Left -> Next Slide
+      setActiveIndex((prev) => (prev + 1) % items.length);
+      startTimer(); // Reset timer
+    } else if (distance < -minSwipeDistance) {
+      // Swiped Right -> Previous Slide
+      setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+      startTimer(); // Reset timer
+    }
+
+    // Reset values
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
+
   return (
-    <div className="apple-slider-container">
+    <div
+      className="apple-slider-container"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="apple-slider-track">
         {items.map((item, index) => {
           let circularDistance = (index - activeIndex + items.length) % items.length;
