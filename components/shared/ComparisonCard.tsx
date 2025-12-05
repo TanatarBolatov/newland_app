@@ -19,7 +19,8 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({ item }) => {
           <source src={item.video || item.src} type="video/webm" />
         </video>
       </div>
-      <h3 className="comp-card-title">{item.title}</h3>
+      {/* Condition added: Only render if title exists */}
+      {item.title && <h3 className="comp-card-title">{item.title}</h3>}
       <div className="comp-text-block"></div>
     </div>
   );

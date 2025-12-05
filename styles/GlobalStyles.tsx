@@ -280,25 +280,48 @@ const styles = `
   .new-comp-card::after { content: ''; position: absolute; top: 0; left: 0; width: 1px; height: 100%; background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent, rgba(255, 255, 255, 0.3)); pointer-events: none; z-index: 3; }
 
   .new-comp-card:hover { transform: scale(1.02); }
-  .comp-video-container { width: 100%; height: 100%; background-color: #1a1a1a; overflow: hidden; position: absolute; top: 0; left: 0; z-index: 0; }
-  .comp-video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  
+  /* UPDATED: Ensure video container covers everything */
+  .comp-video-container { 
+    width: 100%; height: 100%; 
+    background-color: #1a1a1a; 
+    overflow: hidden; 
+    position: absolute; 
+    inset: 0; /* Strict positioning */
+    z-index: 0; 
+  }
+  
+  /* UPDATED: Ensure video stretches/covers */
+  .comp-video { 
+    width: 100%; height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); 
+  }
   .new-comp-card:hover .comp-video { transform: scale(1.05); }
+  
   .comp-text-block { padding: 40px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; position: relative; z-index: 2; justify-content: flex-end; pointer-events: none; }
   
-  /* Desktop Title Style */
+  /* UPDATED: Removed matte glass effect */
   .comp-card-title { 
-    padding: 20px 30px; 
+    padding: 0; /* Remove padding */
     font-family: var(--font-head); 
     font-size: clamp(1.8rem, 2.5vw, 2.5rem); 
     font-weight: 700; 
     color: white; 
     line-height: 1.1; 
-    background-color: rgba(0, 0, 0, 0.6); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); 
-    border-radius: 16px; 
+    
+    /* Removed Glass Effect */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+
+    /* Added Text Shadow for readability */
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    
     width: fit-content; 
-    margin: 30px 0 0 30px; 
+    margin: 30px; /* Kept margin for positioning */
     position: relative; 
     z-index: 2; 
     pointer-events: none; 
