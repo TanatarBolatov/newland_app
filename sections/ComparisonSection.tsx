@@ -7,7 +7,7 @@ export const ComparisonSection = () => {
     { title: "", desc: "", video: "/videos/video_one.webm", poster: "/logo/casterlogo.jpg" },
     { title: "", desc: "", video: "/videos/video_4.mp4", poster: "/logo/casterlogo.jpg" },
     { title: "", desc: "", video: "/videos/video_3.mp4", poster: "/logo/casterlogo.jpg" },
-    { title: "", desc: "", video: "/videos/video_7.mp4", poster: "/logo/casterlogo.jpg" },
+    { title: "", desc: "", video: "/videos/video_77.mp4", poster: "/logo/casterlogo.jpg" },
     { title: "", desc: "", video: "/videos/video 5.mp4", poster: "/logo/casterlogo.jpg" },
     { title: "Не сидят в 20-ти разных WA/TG чатах — только в одном месте", desc: "", video: "/videos/tawa.mp4", poster: "/logo/casterlogo.jpg" }
   ];
