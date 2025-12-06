@@ -5,11 +5,11 @@ import { ComparisonCard } from '../components/shared/ComparisonCard';
 export const ComparisonSection = () => {
   const comparisonData = [
     { title: "", desc: "", video: "/videos/video_one.webm", poster: "/logo/casterlogo.jpg" },
-    { title: "", desc: "", video: "/videos/video_4.mp4", poster: "/logo/casterlogo.jpg" },
-    { title: "", desc: "", video: "/videos/video_3.mp4", poster: "/logo/casterlogo.jpg" },
+    { title: "Быстрее откликаются", desc: "", video: "/videos/var 2.mp4", poster: "/logo/casterlogo.jpg" },
+    { title: "", desc: "", video: "/videos/3 var.mp4", poster: "/logo/casterlogo.jpg" },
     { title: "", desc: "", video: "/videos/video_77.mp4", poster: "/logo/casterlogo.jpg" },
-    { title: "", desc: "", video: "/videos/video 5.mp4", poster: "/logo/casterlogo.jpg" },
-    { title: "Не сидят в 20-ти разных WA/TG чатах — только в одном месте", desc: "", video: "/videos/tawa.mp4", poster: "/logo/casterlogo.jpg" }
+    { title: "Получают больше ролей", desc: "", video: "/videos/var 5.mp4", poster: "/logo/casterlogo.jpg" },
+    { title: "Не сидят в 20-ти разных WA|TG чатах — только в одном месте", desc: "", video: "/videos/Video6.mp4", poster: "/logo/casterlogo.jpg" }
   ];
 
   return (
